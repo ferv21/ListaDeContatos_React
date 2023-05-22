@@ -31,6 +31,7 @@ export const Tag = styled.span<TagProps>`
   padding: 4px;
   border-radius: 8px;
   font-size: 12px;
+  color: #fff;
   background-color: ${(props) => corTag(props)};
 `
 

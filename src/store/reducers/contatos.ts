@@ -1,41 +1,52 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import * as enums from '../../utils/enums/contato'
 import Contato from '../../models/Contato'
+
+type ContatosSlice = {
+  itens: Contato[]
+}
+
+const initialState: ContatosSlice = {
+  itens: [
+    {
+      id: 1,
+      nome: 'Fernando Viana',
+      email: 'fernandoviana@gmail.com',
+      tipoContato: enums.ContatoTipo.FAMILIA,
+      telefone: '(92)99277-9859'
+    },
+    {
+      id: 2,
+      nome: 'Felipe Viana',
+      email: 'felipeviana@gmail.com',
+      tipoContato: enums.ContatoTipo.AMIGOS,
+      telefone: '(92)9357-9852'
+    },
+    {
+      id: 3,
+      nome: 'João Paulo',
+      email: 'joaopaulo@gmail.com',
+      tipoContato: enums.ContatoTipo.TRABALHO,
+      telefone: '(92)99347-9432'
+    },
+    {
+      id: 4,
+      nome: 'EBAC EATS',
+      email: 'ebaceats@gmail.com',
+      tipoContato: enums.ContatoTipo.SERVICOS,
+      telefone: '(92)3658-5263'
+    }
+  ]
+}
+
 export const contatoSlice = createSlice({
   name: 'contato',
-  initialState: [
-    new Contato(
-      1,
-      'Fernando Viana',
-      'fernandoviana@gmail.com',
-      enums.ContatoTipo.FAMILIA,
-      '(92)99277-9859'
-    ),
-    new Contato(
-      2,
-      'Felipe Viana',
-      'felipeviana@gmail.com',
-      enums.ContatoTipo.AMIGOS,
-      '(92)99277-9232'
-    ),
-    new Contato(
-      3,
-      'Gabriel Silva',
-      'GabrielSilva@gmail.com',
-      enums.ContatoTipo.TRABALHO,
-      '(92)99324-9149'
-    ),
-    new Contato(
-      4,
-      'Ebac Eats',
-      'Ebaceats@gmail.com',
-      enums.ContatoTipo.SERVICOS,
-      '(92)3212-9149'
-    )
-  ],
+  initialState: initialState,
   reducers: {
     remover: (state, action: PayloadAction<number>) => {
-      state = state.filter((contato) => contato.id !== action.payload)
+      state.itens = [
+        ...state.itens.filter((contato) => contato.id !== action.payload)
+      ]
     }
   }
 })
