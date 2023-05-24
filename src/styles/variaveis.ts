@@ -4,7 +4,5 @@ export default {
   verde: '#27ae60',
   vermelho: '#c0392b',
   cinza: '#bdc3c7',
-  cinzaClaro: '#ecf0f1',
-  amarelo: '#f1c40f',
-  laranja: '#e67e22'
+  cinzaClaro: '#ecf0f1'
 }

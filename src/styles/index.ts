@@ -9,7 +9,4 @@ export const EstiloGlobal = createGlobalStyle`
     list-style: none;
   }
 `
-export const Container = styled.div`
-  display: grid;
-  grid-template-columns: 300px auto;
-`
+export const Container = styled.div``

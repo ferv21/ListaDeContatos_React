@@ -9,15 +9,16 @@ type Props = ContatoClass
 
 const Contato = ({
   nome: nomeInicial,
-  email,
-  telefone,
-  tipoContato,
+  email: emailInicial,
+  telefone: telefoneInicial,
   id
 }: Props) => {
   const dispatch = useDispatch()
 
   const [estaEditando, setEstaEditando] = useState(false)
   const [nome, setNome] = useState('')
+  const [email, setEmail] = useState('')
+  const [telefone, setTelefone] = useState('')
 
   useEffect(() => {
     if (nomeInicial.length > 0) {
@@ -25,23 +26,44 @@ const Contato = ({
     }
   }, [nomeInicial])
 
+  useEffect(() => {
+    if (emailInicial.length > 0) {
+      setEmail(emailInicial)
+    }
+  }, [emailInicial])
+
+  useEffect(() => {
+    if (telefoneInicial.length > 0) {
+      setTelefone(telefoneInicial)
+    }
+  }, [telefoneInicial])
+
   function cancelarEdicao() {
     setEstaEditando(false)
     setNome(nomeInicial)
+    setEmail(emailInicial)
+    setTelefone(telefoneInicial)
   }
 
   return (
     <>
       <S.CardContato>
-        <S.NomeContato
+        <S.CampoContato
           disabled={!estaEditando}
           value={nome}
           onChange={(e) => setNome(e.target.value)}
-        ></S.NomeContato>
-        <S.EmailContato value={email}></S.EmailContato>
-        <S.NumeroContato value={telefone}></S.NumeroContato>
+        ></S.CampoContato>
+        <S.CampoContato
+          disabled={!estaEditando}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        ></S.CampoContato>
+        <S.CampoContato
+          disabled={!estaEditando}
+          value={telefone}
+          onChange={(e) => setTelefone(e.target.value)}
+        ></S.CampoContato>
         <div>
-          <S.Tag tipoContato={tipoContato}>{tipoContato}</S.Tag>{' '}
           {estaEditando ? (
             <>
               <S.BotaoSalvar
@@ -51,8 +73,7 @@ const Contato = ({
                       nome,
                       id,
                       email,
-                      telefone,
-                      tipoContato
+                      telefone
                     })
                   )
                   {
