@@ -6,6 +6,11 @@ import { ListaContainer } from './styles'
 
 const ListaContatos = () => {
   const { itens } = useSelector((state: RootReducer) => state.contatos) //aqui podemos retorar algo do nosso state, que são os reducers do rootreducer
+  const { termo } = useSelector((state: RootReducer) => state.filtro)
+
+  const filtraContato = () => {
+    return itens.filter((item) => item.nome.search(termo) >= 0)
+  }
 
   return (
     <>
@@ -14,9 +19,9 @@ const ListaContatos = () => {
         <input type="email" />
         <input type="tel" />
 
-        <h1>Família</h1>
+        <h1>{termo}</h1>
         <ul>
-          {itens.map((contato) => (
+          {filtraContato().map((contato) => (
             <li key={contato.telefone}>
               <Contato
                 id={contato.id}
