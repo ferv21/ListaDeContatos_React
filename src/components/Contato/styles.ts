@@ -19,12 +19,39 @@ export const CardContato = styled.div`
   border-radius: 16px;
   font-size: 18px;
   margin-bottom: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 `
 
-export const NomeContato = styled.h3``
-export const EmailContato = styled.h4``
-export const NumeroContato = styled.span`
-  display: block;
+export const NomeContato = styled.textarea`
+  background-color: transparent;
+  border: none;
+  resize: none;
+  text-align: center;
+  &:focus {
+    outline: none;
+    border: none;
+  }
+`
+export const EmailContato = styled.textarea`
+  background-color: transparent;
+  border: none;
+  resize: none;
+  text-align: center;
+  &:focus {
+    outline: none;
+    border: none;
+  }
+`
+export const NumeroContato = styled.textarea`
+  background-color: transparent;
+  border: none;
+  resize: none;
+  text-align: center;
+  &:focus {
+    outline: none;
+    border: none;
+  }
 `
 export const Tag = styled.span<TagProps>`
   display: inline-block;
